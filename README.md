@@ -20,13 +20,15 @@ You are tasked to develop a web application that allows users to upload a PDF fi
 - Implement user authentication so that each user can have their own set of PDF files.
 - Allow the user to rearrange the order of selected pages in the new PDF.
 
+  ## Submission:
+- Submit your work by filling [this form](https://docs.google.com/forms/d/e/1FAIpQLSeACdInJitqQ8hncrJdsTYEXVuts0Rb_WlMhLihXz06MTFmwA/viewform) with a link to your repository.
+- Add clear instructions on how to run your code in the README
+- Add screenshots of various states of your app
+
 ## Evaluation:
 - Correctness: Does the application work as expected?
 - Code Quality: Is the code well-organized, commented, and easy to understand?
 - User Experience: Is the application easy to use and intuitive?
 - Error Handling: How does the application handle potential errors?
-- Documentation: Is the code and the setup process well-documented? Are comments clear and well formatted?
+- Documentation: Is the code and the setup process well-documented?
 
-## Submission:
-- Submit your work by filling [this form](https://docs.google.com/forms/d/e/1FAIpQLSeACdInJitqQ8hncrJdsTYEXVuts0Rb_WlMhLihXz06MTFmwA/viewform) with a link to your repository.
-- Add clear instructions on how to run your code in the README, and add screenshots of various states of your app. 
