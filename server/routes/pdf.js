@@ -202,17 +202,28 @@ pdfRouter.get('/download/:pdfId', authenticateUser, async (req, res) => {
     }
 });
 
-userRouter.post("/rearrange-pdf/:pdfId", authenticateUser, async (req, res) => {
+pdfRouter.post("/rearrange-pdf/:pdfId", authenticateUser, async (req, res) => {
     try {
       const pdfId = req.params.pdfId;
-      const pdfInfo = await PdfModel.findById(pdfId);
+      const pdfInfo = await PDFModel.findById(pdfId);
       if (!pdfInfo) return res.status(404).json({ message: "PDF not found" });
   
       const pdfPath = pdfInfo.filePath;
+      if (!fs.existsSync(pdfPath)) {
+        return res.status(404).json({ message: "PDF file not found on server" });
+      }
+  
       const existingPdfBytes = fs.readFileSync(pdfPath);
       const pdfDoc = await PDFDocument.load(existingPdfBytes);
   
       const pageOrder = req.body.pageOrder;
+      const numPages = pdfDoc.getPages().length;
+      console.log(numPages)
+      const isValidOrder = pageOrder.every(num => num > 0 && num <= numPages);
+      if (!isValidOrder) {
+        return res.status(400).json({ message: "Invalid page order" });
+      }
+  
       const rearrangedPdf = await PDFDocument.create();
       for (const pageIndex of pageOrder) {
         const [page] = await rearrangedPdf.copyPages(pdfDoc, [pageIndex - 1]);
@@ -222,15 +233,13 @@ userRouter.post("/rearrange-pdf/:pdfId", authenticateUser, async (req, res) => {
       const rearrangedPdfBytes = await rearrangedPdf.save();
       fs.writeFileSync(pdfPath, rearrangedPdfBytes);
   
-      await PdfModel.findByIdAndUpdate(pdfId, { updatedAt: new Date() });
+      await PDFModel.findByIdAndUpdate(pdfId, { updatedAt: new Date() });
   
       res.json({ message: "PDF rearranged successfully" });
     } catch (error) {
       console.error(error);
-      res.status(500).json({ message: "Internal Server Error", error });
+      res.status(500).json({ message: "Internal Server Error", error: error.message });
     }
   });
-
-
 
 module.exports={pdfRouter}

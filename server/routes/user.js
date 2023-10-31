@@ -18,7 +18,7 @@ userRouter.post("/register",validateUserForRegistration,async(req,res)=>{
     try {
         let newUser = new UserModel(req.body);
         let output = await newUser.save();
-        res.send(output);
+        res.status(201).json({message:`Hi ${req.body.name}, you have registered successfully.`});
         
     } catch (error) {
         console.log(error)
@@ -35,7 +35,7 @@ userRouter.post("/login",validateUserForLogin,async(req,res)=>{
                                 //   { expiresIn: '24h' }
                                   );
             
-            res.send({message:"logined successfully",token})}
+            res.status(201).json({message:"logined successfully",token})}
         
     } catch (error) {
         console.log(error)

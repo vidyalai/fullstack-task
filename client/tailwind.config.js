@@ -1,4 +1,3 @@
-/** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
@@ -7,6 +6,13 @@ module.exports = {
   ],
   theme: {
     extend: {
+      maxWidth: {
+        'md': '32rem', 
+      },
+      colors: {
+        neonBlue: '#4D4DFF',
+        customYellow: '#FFD369',
+      },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
