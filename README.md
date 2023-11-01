@@ -35,8 +35,8 @@ You are tasked to develop a web application that allows users to upload a PDF fi
 - Documentation: Is the code and the setup process well-documented?
 
 ## Guidelines: 
-- Direct assistance from ChatGPT should not be sought in the form of code or detailed solutions. General knowledge and concepts can be referred to.
-- Code, designs, or ideas from existing sources, including open-source projects or online tutorials, should not be used. The work should be original.
-- Collaboration with others on this specific task should be avoided. It should be an individual effort.
-- Personal skills, problem-solving abilities, and creativity should be showcased in completing this task.
+- This task should be individual effort. Do not collaborate with others.
+- Do not copy code directly from ChatGPT. General knowledge and concepts can be referred to.
+- Code from existing sources, including open-source projects or online tutorials, should not be used. The work should be original.
+- Showcase your problem-solving abilities, creativity and personal skills when completing this task.
 
